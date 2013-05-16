@@ -1,0 +1,35 @@
+<h1><%= @employee.name %></h1>
+
+<%= link_to "Profile",
+ employee_employee_profile_url(@employee, @profile)%>
+
+  Supervisor:
+  <% if @employee.supervisor %>
+    <%= link_to @employee.supervisor.name, employee_url(@employee.supervisor) %>
+  <% else %>
+    None
+  <% end %>
+
+  <br>
+
+  Subordinates:
+
+  <% if @employee.subordinates.empty? %>
+    None
+  <% else %>
+    <% @employee.subordinates.each do |sub|%>
+      <%= link_to sub.name, employee_url(sub) %><br>
+    <% end %>
+  <% end %>
+
+  <br>
+
+  Teams:
+
+  <% if @employee.teams.empty? %>
+    None
+  <% else %>
+    <% @employee.teams.each do |team|%>
+      <%= link_to team.name, team_url(team) %><br>
+    <% end %>
+  <% end %>

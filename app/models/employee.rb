@@ -10,6 +10,8 @@ class Employee < ActiveRecord::Base
            :inverse_of => :supervisor,
            :foreign_key => :supervisor_id
 
+  has_one :employee_profile
+
   has_many :team_memberships
   has_many :teams, :through => :team_memberships
 
