@@ -6,5 +6,11 @@ class Employee < ActiveRecord::Base
 
   belongs_to :supervisor, :class_name => "Employee"
 
+  has_many :supervised_teams, :class_name => "Team",
+           :inverse_of => :supervisor
+
+  has_many :team_memberships
+  has_many :teams, :through => :team_memberships
+
   validates :name, :presence => true
 end
