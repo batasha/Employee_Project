@@ -1,0 +1,20 @@
+<%= form_for(@employee) do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :supervisor %>
+  <%= f.collection_select :supervisor_id, Employee.all, :id, :name%>
+  <br>
+  <% @teams.each do |team| %>
+    <label><input type="checkbox" name="student[team_ids][]"
+     value="<%= team.id %>" <%= "checked" if
+     @employee.teams.include?(team) %>>
+    <%= team.name %></label><br>
+  <% end %>
+
+  <input type="hidden" name="student[team_ids][]" value="">
+
+  <%= f.submit %>
+
+<% end %>

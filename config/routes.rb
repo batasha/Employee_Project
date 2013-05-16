@@ -1,9 +1,8 @@
 EmployeeProject::Application.routes.draw do
   root to: "teams#index"
 
-  resources :employees do
-    resources :employee_profiles
-  end
+  resources :employees
+  resources :employee_profiles
 
   resources :teams
 end

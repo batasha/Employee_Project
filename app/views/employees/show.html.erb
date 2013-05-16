@@ -1,7 +1,7 @@
 <h1><%= @employee.name %></h1>
 
 <%= link_to "Profile",
- employee_employee_profile_url(@employee, @profile)%>
+ employee_profile_url(@employee.employee_profile)%>
 
   Supervisor:
   <% if @employee.supervisor %>

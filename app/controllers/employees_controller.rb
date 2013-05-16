@@ -8,7 +8,7 @@ class EmployeesController < ApplicationController
   def create
     @employee = Employee.new(params[:employee])
     if @employee.save
-      redirect_to :show
+      redirect_to @employee
     else
       render :new
     end
@@ -16,17 +16,17 @@ class EmployeesController < ApplicationController
 
   def show
     @employee = Employee.find(params[:id])
-    @profile = @employee.employee_profile
   end
 
   def edit
     @employee = Employee.find(params[:id])
+    @teams = Team.all
   end
 
   def update
     @employee = Employee.find(params[:id])
-    if @employee.update_attributes
-      redirect_to :show
+    if @employee.update_attributes(params[:employee])
+      redirect_to @employee
     else
       render :edit
     end

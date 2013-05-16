@@ -1,5 +1,6 @@
 class Employee < ActiveRecord::Base
-  attr_accessible :name, :supervisor_id, :subordinate_ids, :supervised_team_ids
+  attr_accessible :name, :supervisor_id, :subordinate_ids,
+                  :supervised_team_ids, :team_ids
 
   has_many :subordinates, :class_name => "Employee",
            :foreign_key => :supervisor_id
